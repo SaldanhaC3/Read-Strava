@@ -3,11 +3,11 @@ version: '3.8'
 services:
   db:
     image: postgres:15-alpine
-    container_name: readstrava_db
+    container_name: striking_db
     environment:
-      POSTGRES_USER: readstrava_user
-      POSTGRES_PASSWORD: readstrava_password
-      POSTGRES_DB: readstrava
+      POSTGRES_USER: striking_user
+      POSTGRES_PASSWORD: striking_password
+      POSTGRES_DB: striking
     ports:
       - "5432:5432"
     volumes:

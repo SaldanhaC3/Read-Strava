@@ -1,4 +1,4 @@
-# Read-Strava
+# Striking
 
 Measure your reading like you measure your runs. A PWA to track your pages per minute, manage your library, and share your streaks with friends.
 

@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="max-w-5xl mx-auto px-4 flex justify-between h-16 items-center">
         <Link to="/" className="font-bold text-xl flex items-center gap-2 text-emerald-600">
           <BookOpen className="w-6 h-6" />
-          Read-Strava
+          Striking
         </Link>
         
         {user ? (

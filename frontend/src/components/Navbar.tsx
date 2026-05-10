@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { BookOpen, BarChart2, Activity, User as UserIcon, Settings } from 'lucide-react';
+import { BookOpen, BarChart2, Activity, User as UserIcon } from 'lucide-react';
 
 const Navbar = () => {
   const { user, logout } = useAuth();

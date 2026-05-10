@@ -8,6 +8,7 @@ interface User {
   handle: string;
   avatar_url?: string;
   theme_palette?: string;
+  bio?: string;
 }
 
 interface AuthContextType {

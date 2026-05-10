@@ -18,7 +18,7 @@ const BookDetail = () => {
 
   if (!book) return <div>Loading book details...</div>;
 
-  const handleFinishSession = async (sessionData: any) => {
+  const handleFinishSession = async () => {
     setIsSessionActive(false);
     // Refresh book info (progress)
     const res = await api.get('/user-books');

@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #10b981; /* emerald 500 */
+  --primary-dark: #047857;
+  --bg-color: #f8fafc; /* slate 50 */
+  --text-color: #0f172a; /* slate 900 */
+}
+
+/* Optional themes based on palette */
+.theme-default {
+  --primary: #10b981;
+}
+.theme-blue {
+  --primary: #3b82f6;
+  --primary-dark: #1d4ed8;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', system-ui, sans-serif;
+}

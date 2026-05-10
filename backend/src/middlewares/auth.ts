@@ -14,7 +14,8 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     return res.status(401).json({ error: 'Token error' });
   }
 
-  const [scheme, token] = parts;
+  const scheme = parts[0] as string;
+  const token = parts[1] as string;
 
   if (!/^Bearer$/i.test(scheme)) {
     return res.status(401).json({ error: 'Token malformatted' });

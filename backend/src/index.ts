@@ -15,41 +15,35 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Init DB
-const initDb = async () => {
-  try {
-    const schema = fs.readFileSync(path.join(__dirname, 'db/schema.sql'), 'utf-8');
-    await pool.query(schema);
-    console.log('Database initialized');
-  } catch (e) {
-    console.error('Error initializing database', e);
-  }
-};
-initDb();
+const apiRouter = express.Router();
 
 // Auth Routes
-app.post('/api/auth/register', register);
-app.post('/api/auth/login', login);
+apiRouter.post('/auth/register', register);
+apiRouter.post('/auth/login', login);
 
 // Protected Routes
-app.use('/api', authMiddleware);
+apiRouter.use(authMiddleware);
 
-app.get('/api/users/me', getMe);
-app.patch('/api/users/me', updateMe);
+apiRouter.get('/users/me', getMe);
+apiRouter.patch('/users/me', updateMe);
 
-app.get('/api/books', getBooks);
-app.post('/api/books', createBook);
+apiRouter.get('/books', getBooks);
+apiRouter.post('/books', createBook);
 
-app.get('/api/user-books', getUserBooks);
-app.post('/api/user-books', addUserBook);
-app.patch('/api/user-books/:id', updateUserBook);
+apiRouter.get('/user-books', getUserBooks);
+apiRouter.post('/user-books', addUserBook);
+apiRouter.patch('/user-books/:id', updateUserBook);
 
-app.post('/api/sessions/start', startSession);
-app.post('/api/sessions/finish', finishSession);
-app.get('/api/sessions', getSessions);
+apiRouter.post('/sessions/start', startSession);
+apiRouter.post('/sessions/finish', finishSession);
+apiRouter.get('/sessions', getSessions);
 
-app.get('/api/stats', getStats);
-app.get('/api/feed', getFeed);
+apiRouter.get('/stats', getStats);
+apiRouter.get('/feed', getFeed);
+
+// Mount router on /api for local dev and / for Vercel
+app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 5000;
